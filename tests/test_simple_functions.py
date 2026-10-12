@@ -1,6 +1,6 @@
 import pytest
 
-from simple_functions import my_sum
+from simple_functions import my_sum, factorial
 
 
 class TestSimpleFunctions:
@@ -13,3 +13,13 @@ class TestSimpleFunctions:
     def test_my_sum(self, iterable, expected):
         """my_sum adds up the items of lists and tuples."""
         assert my_sum(iterable) == expected
+
+    @pytest.mark.parametrize('number, expected', [
+        (5, 120),
+        (3, 6),
+        (1, 1),
+        (0, 1),
+    ])
+    def test_factorial(self, number, expected):
+        """factorial is right for small numbers, including 0! = 1."""
+        assert factorial(number) == expected
